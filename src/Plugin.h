@@ -5,7 +5,7 @@
 #include <plugin/Plugin.h>
 
 namespace plugin {
-namespace Bro_MACHO {
+namespace Zeek_MACHO {
 
 class Plugin : public ::plugin::Plugin
 {

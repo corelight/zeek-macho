@@ -2,9 +2,9 @@
 #include "Plugin.h"
 #include "MACHO.h"
 
-namespace plugin { namespace Bro_MACHO { Plugin plugin; } }
+namespace plugin { namespace Zeek_MACHO { Plugin plugin; } }
 
-using namespace plugin::Bro_MACHO;
+using namespace plugin::Zeek_MACHO;
 
 plugin::Configuration Plugin::Configure()
 	{
