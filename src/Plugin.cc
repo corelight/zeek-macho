@@ -14,5 +14,6 @@ plugin::Configuration Plugin::Configure()
 	config.description = "MACH-O File Analyzer";
 	config.version.major = 0;
 	config.version.minor = 1;
+    config.version.patch = 0;
 	return config;
 	}
