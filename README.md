@@ -22,7 +22,7 @@ Once installed, this plugin can be loaded with the following Zeek script:
 ```
 @load Zeek/MACHO
 
-event file_macho_header(f: fa_file, m: Bro::MACHOHeader)
+event file_macho_header(f: fa_file, m: Zeek::MACHOHeader)
     {
     print m;
     }
