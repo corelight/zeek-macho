@@ -1,0 +1,11 @@
+Zeek::MACHO - MACH-O File Analyzer (dynamic, version)
+    [File Analyzer] MACHO (ANALYZER_MACHO)
+    [Type] Zeek::MACHOHeaderRaw
+    [Event] file_macho
+    [Event] file_macho_header_raw
+    [Event] file_macho_universal_binary
+    [Event] file_macho_universal_binary_arch
+    [Event] file_macho_single_binary
+    [Event] file_macho_single_binary_command_raw
+    [Event] file_macho_single_binary_command
+

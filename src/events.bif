@@ -1,0 +1,56 @@
+## This event is generated each time file analysis identifies
+## a MACH-O file.
+##
+## f: The file.
+##
+event file_macho%(f: fa_file%);
+
+## This event is generated each time file analysis identifies
+## a macho file.  This data is raw and the byte order of the data is the endian specified by the field!
+##
+## f: The file.
+## h: The Mach-o header
+##
+event file_macho_header_raw%(f: fa_file, m: Zeek::MACHOHeaderRaw%);
+
+## This event is generated each time file analysis identifies
+## a macho file that is a universal binary.
+## This data is raw and the byte order of the data is the endian specified by the field!
+##
+## f: The file.
+## h: The Mach-o header
+##
+event file_macho_universal_binary%(f: fa_file, m: Zeek::MACHOHeaderRaw%);
+
+## This event is generated each time file analysis identifies
+## a macho file that is a universal binary, and an arch record is processed.
+##
+## f: The file.
+## h: The Mach-o header
+##
+event file_macho_universal_binary_arch%(f: fa_file, m: Zeek::MACHOHeaderRaw, a: Zeek::MACHOFATArch%);
+
+## This event is generated each time file analysis identifies
+## a macho file that is a single binary.
+## This data is raw and the byte order of the data is the endian specified by the field!
+##
+## f: The file.
+## h: The Mach-o header
+##
+event file_macho_single_binary%(f: fa_file, m: Zeek::MACHOHeaderRaw%);
+
+## This event is generated each time file analysis identifies
+## a command section.  This data is raw and the byte order of the data is the endian specified by the field!
+##
+## f: The file.
+## s: The Mach-o section
+##
+event file_macho_single_binary_command_raw%(f: fa_file, m: Zeek::MACHOHeaderRaw, cmd_num: count, offset: count, d: Zeek::MACHOCommandData%);
+
+## This event is generated each time file analysis identifies
+## a macho command.  Most users will want to use this event.
+##
+## f: The file.
+## h: The Mach-o command
+##
+event file_macho_single_binary_command%(f: fa_file, m: Zeek::MACHOHeaderRaw, cmd_num: count, offset: count, c: Zeek::MACHOCommand%);
