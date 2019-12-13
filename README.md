@@ -1,5 +1,5 @@
 
-# A Zeek FileAnalyzers Package
+# A Zeek Mach-o File Analysis Package
 
 This package implements:
 
