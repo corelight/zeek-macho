@@ -19,7 +19,7 @@ sudo make install
 
 The testing pcap file:  
 
-https://github.com/corelight/ZeekMACHOAnalyzer/blob/master/tests/Traces/all_executables.pcap
+https://github.com/corelight/zeek-elf/blob/master/tests/Traces/all_executables.pcap
 
 Once this analyzer is installed, this plugin can be loaded with the following Zeek script:
 
