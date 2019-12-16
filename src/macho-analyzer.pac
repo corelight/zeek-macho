@@ -15,11 +15,11 @@
 
 refine flow File += {
 
-	function proc_macho_header(h: MACHO_Header): bool
-		%{
+    function proc_macho_header(h: MACHO_Header): bool
+        %{
 
-	    if ( file_macho_header_raw )
-			{
+        if ( file_macho_header_raw )
+            {
 
             RecordVal* dh = new RecordVal(BifType::Record::Zeek::MACHOHeaderRaw);
             dh->Assign(0, new StringVal(${h.signature}.length(), (const char*) ${h.signature}.data()));
@@ -30,8 +30,8 @@ refine flow File += {
                                                      dh);
             }
 
-		return true;
-		%}
+        return true;
+        %}
 };
 
 refine typeattr MACHO_Header += &let {

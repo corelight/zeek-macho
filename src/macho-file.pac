@@ -2,32 +2,32 @@
 
 # The base record for a MACHO file
 type MACHO_File = case $context.connection.is_done() of {
-	false -> MACHO      : MACHO_Image;
-	true  -> overlay    : bytestring &length=1 &transient;
+    false -> MACHO      : MACHO_Image;
+    true  -> overlay    : bytestring &length=1 &transient;
 };
 
 type MACHO_Image = record {
-	headers : Headers;
+    headers : Headers;
 };
 
 refine connection MockConnection += {
 
-	%member{
-		bool done_;
-	%}
+    %member{
+        bool done_;
+    %}
 
-	%init{
-		done_ = false;
-	%}
+    %init{
+        done_ = false;
+    %}
 
-	function mark_done(): bool
-		%{
-		done_ = true;
-		return true;
-		%}
+    function mark_done(): bool
+        %{
+        done_ = true;
+        return true;
+        %}
 
-	function is_done(): bool
-		%{
-		return done_;
-		%}
+    function is_done(): bool
+        %{
+        return done_;
+        %}
 };
