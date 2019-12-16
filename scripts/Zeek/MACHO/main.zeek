@@ -230,6 +230,132 @@ event file_macho_single_binary(f: fa_file, m: Zeek::MACHOHeaderRaw) &priority=5
 		}
 	}
 
+event file_macho_single_binary_command_raw(f: fa_file, m: Zeek::MACHOHeaderRaw, cmd_num: count, offset: count, d: Zeek::MACHOCommandData) &priority=5
+    {
+	hook set_file(f);
+
+	local machocommand: Zeek::MACHOCommand;
+
+	local segname: string;
+	local vmaddr: string;
+	local vmsize: string;
+	local fileoff: string;
+	local filesize: string;
+	local maxprot: string;
+	local initprot: string;
+	local nsects: string;
+	local flags: string;
+	local parsed = F;
+
+	# We only care about LC_SEGMENT and LC_SEGMENT_64 commands
+	if (d$cmd == 0x01 || d$cmd == 0x19)
+		{
+		segname = d$data[0:16];
+		switch (f$macho$cpu_types[0])
+			{
+			case "x86_64":
+				vmaddr = d$data[16:24];
+				vmsize = d$data[24:32];
+				fileoff = d$data[32:40];
+				filesize = d$data[40:48];
+				maxprot = d$data[48:52];
+				initprot = d$data[52:56];
+				nsects = d$data[56:60];
+				flags = d$data[60:64];
+				parsed = T;
+				break;
+			case "x86":
+				vmaddr = d$data[16:20];
+				vmsize = d$data[20:24];
+				fileoff = d$data[24:28];
+				filesize = d$data[28:32];
+				maxprot = d$data[32:36];
+				initprot = d$data[36:40];
+				nsects = d$data[40:44];
+				flags = d$data[44:48];
+				parsed = T;
+				break;
+			default:
+				# Abort!
+				parsed = F;
+				break;
+			}
+
+		if (parsed == T)
+			{
+			machocommand$cmd = d$cmd;
+			machocommand$cmdsize = d$cmdsize;
+			machocommand$segname = segname;
+
+			if (|vmaddr| > 0)
+				{
+				machocommand$vmaddr = bytestring_to_count(vmaddr, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$vmaddr = 0;
+				}
+			if (|vmsize| > 0)
+				{
+				machocommand$vmsize = bytestring_to_count(vmsize, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$vmsize = 0;
+				}
+			if (|fileoff| > 0)
+				{
+				machocommand$fileoff = bytestring_to_count(fileoff, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$fileoff = 0;
+				}
+			if (|filesize| > 0)
+				{
+				machocommand$filesize = bytestring_to_count(filesize, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$filesize = 0;
+				}
+			if (|maxprot| > 0)
+				{
+				machocommand$maxprot = bytestring_to_count(maxprot, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$maxprot = 0;
+				}
+			if (|initprot| > 0)
+				{
+				machocommand$initprot = bytestring_to_count(initprot, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$initprot = 0;
+				}
+			if (|nsects| > 0)
+				{
+				machocommand$nsects = bytestring_to_count(nsects, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$nsects = 0;
+				}
+			if (|flags| > 0)
+				{
+				machocommand$flags = bytestring_to_count(flags, f$macho$little_endian );
+				}
+				else
+				{
+				machocommand$flags = 0;
+				}
+			event file_macho_single_binary_command(f, m, cmd_num, offset, copy(machocommand));
+			}
+		}
+    }
+
 event file_macho_universal_binary(f: fa_file, m: Zeek::MACHOHeaderRaw) &priority=5
 	{
 	hook set_file(f);
