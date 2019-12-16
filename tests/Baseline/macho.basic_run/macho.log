@@ -1,0 +1,17 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	macho
+#open	2019-12-13-14-10-06
+#fields	ts	id	signature	is_64bit	little_endian	is_universal_binary	num_binaries	cpu_types	cpu_subtypes	image_offsets	image_sizes	filetype	ncmds	sizeofcmds	flags
+#types	time	string	string	bool	bool	bool	count	vector[string]	vector[string]	vector[count]	vector[count]	string	count	count	string
+1575573054.714905	FdLrA12jaXM0aeUFL7	0xCAFEBABE	F	F	T	2	x86,POWERPC	386,7400	4096,581632	576016,663296	-	-	-	-
+1575573054.771418	FzLp3E23ljWzpUhjYb	0xFEEDFACF	T	T	F	-	x86_64	ALL	(empty)	(empty)	MH_EXECUTE	16	2008	0x00200085
+1575573054.786828	FT0BPEFTGWsUJnKq5	0xFEEDFACE	F	T	F	-	x86	386	(empty)	(empty)	MH_EXECUTE	16	1528	0x01200085
+1575573054.805742	FpsfRh42ET7tOfLZSa	0xFEEDFACE	F	T	F	-	ARM	ALL	(empty)	(empty)	MH_EXECUTE	15	1560	0x00000085
+1575573054.831830	FcXhineqH4rVNW5n2	0xCAFEBABE	F	F	T	3	ARM,ARM,ARM64	V7,V7S,ALL	16384,114688,212992	91792,91792,93248	-	-	-	-
+1575573054.856230	Fi71fa4AoXLFkyBZxc	0xFEEDFACE	F	T	F	-	ARM	V7S	(empty)	(empty)	MH_EXECUTE	24	2452	0x00200085
+1575573055.498662	Fn2NC31bzy2NH8Wt04	0xFEEDFACF	T	T	F	-	x86_64	ALL	(empty)	(empty)	MH_EXECUTE	17	1704	0x00200085
+1575573055.515049	FYXjlFG0LU4PmVdYg	0xCAFEBABE	F	F	T	2	x86_64,x86	ALL,386	4096,32768	26864,26320	-	-	-	-
+#close	2019-12-13-14-10-06
