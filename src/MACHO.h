@@ -16,20 +16,20 @@ namespace file_analysis {
  */
 class MACHO: public file_analysis::Analyzer {
 public:
-	~MACHO();
+    ~MACHO();
 
-	static file_analysis::Analyzer* Instantiate(RecordVal* args, File* file)
-		{ return new MACHO(args, file); }
+    static file_analysis::Analyzer* Instantiate(RecordVal* args, File* file)
+        { return new MACHO(args, file); }
 
-	virtual bool DeliverStream(const u_char* data, uint64_t len);
+    virtual bool DeliverStream(const u_char* data, uint64_t len);
 
-	virtual bool EndOfFile();
+    virtual bool EndOfFile();
 
 protected:
     MACHO(RecordVal* args, File* file);
-	binpac::MACHO::File* interp;
-	binpac::MACHO::MockConnection* conn;
-	bool done;
+    binpac::MACHO::File* interp;
+    binpac::MACHO::MockConnection* conn;
+    bool done;
 };
 
 } // namespace file_analysis
