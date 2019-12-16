@@ -5,6 +5,21 @@ This package implements:
 
 - Mach-o
 
+## TLDR!
+
+Use your trusty zkg, and you can install like so:
+
+```
+% zkg autoconfig
+% zkg install https://github.com/corelight/zeek-macho
+```
+
+Now in any Zeek script, just load the plugin and it "just works":
+
+```
+@load Zeek/MACHO
+```
+
 ## Building and Installing
 
 This plugin can be built with:
