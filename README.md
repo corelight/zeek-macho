@@ -21,6 +21,10 @@ The testing pcap file:
 
 https://github.com/corelight/zeek-elf/blob/master/tests/Traces/all_executables.pcap
 
+Binaries in this pcap were pulled from:
+
+https://github.com/JonathanSalwan/binary-samples
+
 Once this analyzer is installed, this plugin can be loaded with the following Zeek script:
 
 ```
