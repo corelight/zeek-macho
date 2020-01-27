@@ -1,5 +1,4 @@
-## This event is generated each time file analysis identifies
-## a MACH-O file.
+## This event is generated each time MACH-O file analysis begins for a file.
 ##
 ## f: The file.
 ##
