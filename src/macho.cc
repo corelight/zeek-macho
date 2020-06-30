@@ -1,4 +1,4 @@
-#include "MACHO.h"
+#include "macho.h"
 #include "file_analysis/Manager.h"
 
 using namespace file_analysis;

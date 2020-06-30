@@ -1,6 +1,6 @@
 
 #include "Plugin.h"
-#include "MACHO.h"
+#include "macho.h"
 
 namespace plugin { namespace Zeek_MACHO { Plugin plugin; } }
 
