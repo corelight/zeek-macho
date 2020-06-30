@@ -12,7 +12,7 @@ zeek_plugin_pac(
         src/macho-file-headers.pac
         src/macho-file.pac
 )
-zeek_plugin_cc(src/MACHO.cc src/Plugin.cc)
+zeek_plugin_cc(src/macho.cc src/Plugin.cc)
 zeek_plugin_bif(src/macho.bif src/types.bif src/events.bif)
 zeek_plugin_dist_files(README.md CHANGES COPYING VERSION)
 zeek_plugin_end()
